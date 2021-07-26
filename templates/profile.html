@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    <main class="container mt-3">
+        <div class="card my-4 mx-auto">
+            <div class="card-body m-2 m-md-4">
+                <article class="row">
+                    <div class="col-5"><img src="{{ data.picture }}" class="img-fluid" alt=""></div>
+                    <div class="col-7">
+
+                        <section class="teacher=info">
+
+                            <h1 class="h2">{{ data.name }}</h1>
+                            <p>{% for goal in goals %}
+                                <span class="badge badge-secondary mr-2">{{ goal }} </span>{% endfor %}
+                                Рейтинг: {{ data.rating }} Ставка: {{ data.price }} / час</p>
+                            <p>{{ data.about }}</p>
+
+                        </section>
+
+                        <section class="available">
+
+                            <h4 class="mb-4 mt-5">Записаться на пробный урок</h4>
+
+                            {% for day in days.keys() %}
+                                <h6 class="mt-4">{{ days[day] }}</h6>
+                                {% if data.free[day].values()|max == False %}
+                                    <p>Нет свободных уроков</p>
+                                {% else %}
+                                    {% for time in data.free[day].keys() %}
+                                        {% if data.free[day][time] == True %}
+                                            <a href="{{ "/booking/{}/{}/{}".format(data.id,day,time.split(':')[0]) }}"
+                                               class="btn btn-outline-success  mr-2">{{ time }} свободно</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </section>
+
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </main>
+{% endblock %}
