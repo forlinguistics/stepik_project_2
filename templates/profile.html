@@ -24,11 +24,11 @@
 
                             {% for day in days.keys() %}
                                 <h6 class="mt-4">{{ days[day] }}</h6>
-                                {% if data.free[day].values()|max == False %}
+                                {% if free[day].values()|max == False %}
                                     <p>Нет свободных уроков</p>
                                 {% else %}
-                                    {% for time in data.free[day].keys() %}
-                                        {% if data.free[day][time] == True %}
+                                    {% for time in free[day].keys() %}
+                                        {% if free[day][time] == True %}
                                             <a href="{{ "/booking/{}/{}/{}".format(data.id,day,time.split(':')[0]) }}"
                                                class="btn btn-outline-success  mr-2">{{ time }} свободно</a>
                                         {% endif %}

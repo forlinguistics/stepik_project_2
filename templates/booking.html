@@ -5,7 +5,7 @@
     <main class="container mt-3">
         <div class="row mt-5">
             <div class="col-10 col-md-6 offset-1 offset-md-3 mb-3">
-                <form action="/booking_done/" method="POST" class="card mb-3">
+                <form method="POST" class="card mb-3">
                     <div class="card-body text-center pt-5">
                         <img src="{{ pic }}" class="mb-3" width="95" alt="">
                         <h2 class="h5 card-title mt-2 mb-2">{{ name }}</h2>
@@ -21,10 +21,10 @@
                         </div>
 
                         <label class="mb-1 mt-2" for="clientName">Вас зовут</label>
-                        <input class="form-control" type="text" name="clientName" id="clientName">
+                        <input class="form-control" type="text" name="clientName" id="clientName" required>
 
                         <label class="mb-1 mt-2" for="clientPhone">Ваш телефон</label>
-                        <input class="form-control" type="tel" name="clientPhone" id="clientPhone">
+                        <input class="form-control" type="tel" name="clientPhone" id="clientPhone" required>
 
                         <input type="submit" class="btn btn-primary btn-block mt-4" value="Записаться на пробный урок">
 
